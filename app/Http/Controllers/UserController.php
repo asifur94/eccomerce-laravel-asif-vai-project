@@ -34,7 +34,7 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email'],
-            'avatar' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:1024'],
+            'avatar' => ['image', 'mimes:jpg,jpeg,png', 'max:1024'],
             "password" => ['required', 'string', 'min:8'],
             "address" => "required"
         ]);
@@ -46,6 +46,8 @@ class UserController extends Controller
             $avatarName = time() . '.' . $avatar->getClientOriginalExtension();
             $avatarPath = public_path('/images/');
             $avatar->move($avatarPath, $avatarName);
+        }else{
+            $avatarName = "avatar1.jpg";
         }
 
         if($request->has('is_admin')){

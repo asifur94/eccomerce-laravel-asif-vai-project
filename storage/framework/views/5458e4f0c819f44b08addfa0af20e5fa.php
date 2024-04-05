@@ -14,3 +14,4 @@
 
 
 
+<?php /**PATH D:\learn_laravel\ecco\resources\views/layouts/customizer.blade.php ENDPATH**/ ?>
