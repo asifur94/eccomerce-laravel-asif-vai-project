@@ -3,7 +3,7 @@
     <!-- top header -->
     <div class="grid mx-auto container items-center py-4 grid-cols-12 gap-2">
         <div class="col-span-2">
-            <a href="{{ route('home') }}">
+            <a href="<?php echo e(route('home')); ?>">
                 <svg width="147" height="35" viewBox="0 0 147 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M129.891 15.7539L126.802 20.3964L129.444 24.0779L135.277 15.7539H129.891Z" fill="#11100A" />
                     <path
@@ -69,7 +69,7 @@
                 </svg>
             </div>
             <!-- Input Field -->
-            <form action="{{route("search")}}" method="GET">
+            <form action="<?php echo e(route("search")); ?>" method="GET">
                 <input
                 class="block w-full pl-4 py-2 border-none focus:border-transparent placeholder:text-gray-800 bg-[#efefef] rounded-full  px-2 focus:outline-red-400 focus:outline-[1px] placeholder:font-light placeholder:text-sm"
                 type="text" name="search" placeholder="What are you looking for?" />
@@ -78,33 +78,33 @@
         </div>
 
 
-        {{-- <div class="mx-auto"><img src="assets/media/png/flag.png" alt=""></div> --}}
+        
         <div class="flex flex-col items-center border-r-[1px] border-gray-400">
-            <img src="{{URL::asset("assets/media/png/usd.png")}}" alt="">
+            <img src="<?php echo e(URL::asset("assets/media/png/usd.png")); ?>" alt="">
             <button class="text-sm ">MS Services</button>
         </div>
 
         <div class="flex flex-col items-center">
             
-            @if (auth()->check())
-                @php
+            <?php if(auth()->check()): ?>
+                <?php
                     $user = auth()->user();
-                @endphp
-                <a href="{{route("user.account")}}" class="text-center text-decoration-none text-dark">
-                    <img width="40px" src="{{ URL::asset("images/{$user['avatar']}") }}" class="m-auto rounded-full" alt="account Image">
-                    <p class="text-sm m-0">{{Auth::user()->name}}</p>
+                ?>
+                <a href="<?php echo e(route("user.account")); ?>" class="text-center text-decoration-none text-dark">
+                    <img width="40px" src="<?php echo e(URL::asset("images/{$user['avatar']}")); ?>" class="m-auto rounded-full" alt="account Image">
+                    <p class="text-sm m-0"><?php echo e(Auth::user()->name); ?></p>
                 </a>
-                @else
-                    <a href="{{route("user.login")}}" class="text-center text-decoration-none text-dark">
-                        <img width="40px" src="{{ URL::asset("images/avatar.jpg") }}" class="m-auto rounded-full" alt="account Image">
+                <?php else: ?>
+                    <a href="<?php echo e(route("user.login")); ?>" class="text-center text-decoration-none text-dark">
+                        <img width="40px" src="<?php echo e(URL::asset("images/avatar.jpg")); ?>" class="m-auto rounded-full" alt="account Image">
                         <p class="text-sm m-0">My account</p>
                     </a>
-                @endif
+                <?php endif; ?>
             
         </div>
         <div class="col-span-2 bg-[#f3f3f3] p-2 rounded-lg">
             <div class="flex  items-center bg-[#dedede] rounded-md">
-                <img src="{{ URL::asset('assets/media/png/trauck.png') }}" alt="" class="px-4 mx-auto p-[4px]">
+                <img src="<?php echo e(URL::asset('assets/media/png/trauck.png')); ?>" alt="" class="px-4 mx-auto p-[4px]">
                 <span class="text-[16px] bg-black text-white w-full p-[4px] rounded-md text-center">In 10 Days</span>
             </div>
             <div class="flex items-center justify-center  gap-2">
@@ -115,7 +115,7 @@
         </div>
         
         <div data-modal-target="cart-modal" data-modal-toggle="cart-modal" class="flex bg-[#dedede] col-span-2 rounded-md p-3 gap-8 hover:cursor-pointer">
-            <img src="{{ URL::asset('assets/media/png/cart.png') }}" alt=""
+            <img src="<?php echo e(URL::asset('assets/media/png/cart.png')); ?>" alt=""
                 class="bg-[#efefef] px-4 py-2 rounded-lg ">
             <div>
                 <p class="text-[12px]">Cart</p>
@@ -148,3 +148,4 @@
     </div>
     <div id="toast-container"></div>
 </section>
+<?php /**PATH D:\learn_laravel\ecco\resources\views/home/layouts/header.blade.php ENDPATH**/ ?>

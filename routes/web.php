@@ -76,4 +76,5 @@ Route::post('/cart/remove',[CartController::class,"removeItem"])->name('cart.rem
 
 Route::post('/user/order',[OrderController::class,"store"]);
 
+Route::get("/search",[ShowproductController::class,"searchProduct"])->name("search");
 

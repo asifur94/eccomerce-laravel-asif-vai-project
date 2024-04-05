@@ -17,6 +17,14 @@ class ShowproductController extends Controller
         return view('home.index',["products"=>$products,"lastedProduct"=>$lastedProduct]);
 
     }
+    public function searchProduct(Request $request){
+
+        $products = Product::where("title","LIKE","%$request->search%")->simplePaginate(6);
+        $lastedProduct = Product::latest("title")->first();
+
+        return view('home.search',["products"=>$products,"lastedProduct"=>$lastedProduct]);
+
+    }
     public function singleProduct(string $id){
         $singleProduct = Product::find($id);
         $products = Product::where("product_from",$singleProduct->product_from)

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -38,7 +40,21 @@ class HomeController extends Controller
     
     public function root()
     {
-        return view('dashboard.index');
+        $user = User::all();
+        $userCount = count($user);
+
+        $order = Order::all();
+        $orderCount = count($order);
+
+        $product = Product::all();
+        $productCount = count($product);
+
+        return view('dashboard.index',[
+            "userCount" => $userCount,
+            "orderCount" => $orderCount,
+            "productCount" => $productCount
+
+        ]);
     }
 
     /*Language Translation*/
